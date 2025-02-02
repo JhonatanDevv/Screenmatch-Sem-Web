@@ -74,17 +74,17 @@ public class Principal {
         episodios.forEach(System.out::println);
 
         System.out.println("A partir de que ano você deseja ver os episodios");
-        var ano = leitura.nextLine();
+        var ano = leitura.nextInt();
         leitura.nextLine();
 
 
-        LocalDate dataBusca = LocalDate.of(Integer.parseInt(ano), 1, 1);
+        LocalDate dataBusca = LocalDate.of(ano, 1, 1);
 
         DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         episodios.stream()
-                .filter(e -> e.getDataLancamento()!= null && e.getDataLancamento().isEqual(dataBusca))
+                .filter(e -> e.getDataLancamento ()!= null && e.getDataLancamento().isAfter(dataBusca))
                 .forEach(e -> System.out.println(
-                        "Temporada: " + e.getTitulo() +
+                        "Temporada: " + e.getTemporada() +
                                 "Episódio: " + e.getTitulo() +
                                 "Data Lancamento: " + e.getDataLancamento().format(formatador)
                 ));
