@@ -21,5 +21,4 @@ public class Screenmatch2Application implements CommandLineRunner {
         principal.exibeMenu();
 
     }
-
 }
